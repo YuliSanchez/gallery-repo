@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello Bootstrap</title>
+</head>
+
+<body class="d-flex vh-100 justify-content-center align-items-center bg-light">
+    <div id="app">
+        <div class="container py-5">
+
+            <!-- Título -->
+            <h1 class="mb-4 text-center text-primary">Galería de Pinturas</h1>
+
+            <!-- Filtro -->
+            <div class="row mb-4">
+                <div class="col-md-6 mx-auto">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Buscar por nombre o autor...">
+                </div>
+            </div>
+
+            <!-- Galería -->
+            <div id="gallery" class="row g-4">
+                <!-- Aquí se insertarán las cards dinámicamente -->
+            </div>
+
+            <!-- Paginación -->
+            <nav>
+                <ul id="pagination" class="pagination justify-content-center mt-4"></ul>
+            </nav>
+
+        </div>
+    </div>
+    <!-- Importa tu JS con Vite -->
+    <script type="module" src="./js/app.js"></script>
+</body>
+
+</html>
