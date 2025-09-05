@@ -6,7 +6,8 @@ import { fer } from "./data/paintings";
 // Tu propio código JS
 var modal; 
 document.addEventListener("DOMContentLoaded", () => {
-    renderGallery();
+    onFilterPaintings();
+    renderGallery(paintings);
     initModal();
 });
 
@@ -23,9 +24,10 @@ function initModal(){
     });
 }
 
-function renderGallery(){
+function renderGallery(pictures){
 let gallery = document.getElementById('gallery');
-    paintings.forEach((painting) => {
+    gallery.innerHTML = " "; //always ensure clean the content.
+    pictures.forEach((painting) => {
         let divColumn = document.createElement('div');
         divColumn.classList.add('col-md-3');
 
@@ -80,4 +82,19 @@ function onSelectPainting(painting) {
         </div>
     `;
     modalBody.appendChild(paintingCard);
+}
+
+function onFilterPaintings(){
+    let filterPainting = document.getElementById("searchInput");
+    filterPainting.addEventListener("change",function(event){
+        let text = event.target.value.toLowerCase();
+
+        let paintingFilter = paintings.filter((painting)=>{
+            return painting.title.toLowerCase().includes(text)
+            || painting.author.toLowerCase().includes(text)
+            || painting.year.toString().includes(text)
+            || painting.description.toLowerCase().includes(text)
+        });
+        renderGallery(paintingFilter);
+    })
 }
