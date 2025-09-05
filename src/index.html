@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
 </head>
 
-<body class="d-flex vh-100 justify-content-center align-items-center bg-light">
+<body class="d-flex justify-content-center align-items-center bg-light">
     <div id="app">
         <div class="container py-5">
 
@@ -23,23 +23,26 @@
             </div>
 
             <!-- Galería -->
-            <div id="gallery" class="row g-4 main-gallery">
+            <div id="gallery" class="row g-4 main-gallery mt-3">
                 <!-- Aquí se insertarán las cards dinámicamente -->
-                <div class="card shadow-sm h-100">
-                    <img src="..." class="card-img-top" alt="paint image">
-                    <div class="card-body">
-                        <h5 class="card-title">painting.title</h5>
-                        <p class="card-text mb-1"><strong>Autor:</strong> painting.author</p>
-                        <p class="card-text"><strong>Año:</strong> painting.year</p>
-                    </div>
-                </div>
             </div>
 
             <!-- Paginación -->
             <nav>
                 <ul id="pagination" class="pagination justify-content-center mt-4"></ul>
             </nav>
+            <div class="modal fade" id="gallery-modal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
 
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Importa tu JS con Vite -->
