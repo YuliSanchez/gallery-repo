@@ -12,10 +12,10 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "dependencies": { //Lo utiliza la aplicación 
+  "dependencies": { 
     "bootstrap": "^5.3.8"
   },
-  "devDependencies": { //Lo utilizamos para desarrollar la aplicación 
+  "devDependencies": { 
     "vite": "^7.1.4"
   }
 }

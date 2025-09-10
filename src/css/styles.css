@@ -1,3 +1,28 @@
 .main-gallery{
     border: purple 1px dotted;
 }
+
+#coverflow {
+  perspective: 1000px;
+  gap: 20px;
+}
+
+.coverflow-item {
+  transition: transform 0.5s, opacity 0.5s;
+  flex: 0 0 200px;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.5;
+  transform: rotateY(45deg) scale(0.8);
+}
+
+.coverflow-item.active {
+  transform: rotateY(0) scale(1.1);
+  opacity: 1;
+}
+
+.coverflow-item:hover {
+  transform: rotateY(0) scale(1.05);
+  opacity: 1;
+}
+acg-sjts-xzf

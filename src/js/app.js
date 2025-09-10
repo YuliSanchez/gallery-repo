@@ -3,11 +3,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal } from "bootstrap";
 import { paintings } from "./data/paintings";
 import { fer } from "./data/paintings";
+
+const items = document.querySelectorAll('.coverflow-item');
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      items.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
 // Tu propio código JS
 var modal;
 document.addEventListener("DOMContentLoaded", () => {
   onFilterPaintings();
   renderGallery(paintings);
+  renderGalleryList(paintings); 
+  renderGalleryCoverflow(paintings); 
   initModal();
 });
 
@@ -74,6 +84,38 @@ function renderGallery(pictures) {
   });
 }
 
+function renderGalleryList(pictures) {
+
+    let galleryList = document.getElementById("gallery-list-ul");
+    galleryList.innerHTML = "";
+    pictures.forEach((picture) => {
+        const paintingList = document.createElement("li");
+        paintingList.className = "list-group-item d-flex align-items-center m-3";
+        paintingList.innerHTML = `<img src="${picture.img}" alt="titulo de la pintura" class="rounded me-3">
+                                    <div>
+                                        <h6 class="mb-1">${picture.title}</h6>
+                                        <small class="text-muted">${picture.description}</small>
+                                    </div>`;
+        paintingList.addEventListener("click", function (event) { onSelectPainting(picture); });                            
+        galleryList.appendChild(paintingList);
+    });
+}
+
+function renderGalleryCoverflow(pictures) {
+    let galleryListDiv = document.getElementById("coverflow");
+    galleryListDiv.innerHTML = "";
+    pictures.forEach((picture) => {
+        const paintingCoverflowDiv = document.createElement("div");
+        paintingCoverflowDiv.className = "coverflow-item active";
+        paintingCoverflowDiv.innerHTML = `<img src="${picture.img}" class="img-fluid rounded shadow">
+                                        <h6 class="mt-2 text-center">${picture.title}
+                                        <br><small>${picture.author}</small></h6>`;
+        paintingCoverflowDiv.addEventListener("click", function(event){onSelectPainting(picture);});
+        galleryListDiv.appendChild(paintingCoverflowDiv);
+
+    });
+}
+
 function onSelectPainting(painting) {
   modal.show();
   let modalBody = modal._dialog.querySelector(".modal-body");
@@ -106,5 +148,9 @@ function onFilterPaintings() {
       );
     });
     renderGallery(paintingFilter);
+    renderGalleryList(paintingFilter);
+    renderGalleryCoverflow(paintingFilter); 
   });
 }
+
+
